@@ -18,8 +18,6 @@ public class Card {
     }
 
     Card[] createDeck(){
-        Card[] d ={} ;
-
         Card[] deck = new Card[52] ;
         for (int i=0;i<52;i++){
             int count = 0;
@@ -43,12 +41,25 @@ public class Card {
         return deck;
     }
 
+    Card pickCard(Card[] deck){
+        int rand = (int)Math.floor(Math.random() * 53);
+        Card res = deck[rand];
+        deck[rand] = null;
+        return res;
+    }
+
     public static void main(String[] args) {
         Card obj = new Card(5,"♣");
         Card[] arr = obj.createDeck();
         for(int i=0;i<52;i++){
 
             arr[i].showCard();
+        }
+        for (int x=0;x<11000;x++){
+            int rand = (int)Math.floor(Math.random() * 53);
+            if(rand >52 || rand <0){
+                System.out.println("False");
+            }
         }
     }
 }
